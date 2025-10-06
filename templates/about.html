@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}About - {{ site_name or 'AI Chatbot Assistant' }}{% endblock %}
+
+{% block page_title %}About Our AI Assistant{% endblock %}
+{% block page_subtitle %}Learn about our privacy-focused, machine learning powered chatbot{% endblock %}
+
+{% block content %}
+<div class="row mb-5">
+    <div class="col-lg-8 mx-auto">
+        <h2 class="mb-4">What Makes Our AI Different?</h2>
+        <p class="lead">
+            Our AI chatbot is built entirely with open-source technologies and runs completely locally, 
+            ensuring your privacy while delivering intelligent, contextual responses.
+        </p>
+        
+        <h3 class="mt-5 mb-3">Technology Stack</h3>
+        <div class="row g-4 mb-4">
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-language text-primary me-2"></i>Natural Language Processing
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><strong>NLTK:</strong> Text tokenization and preprocessing</li>
+                            <li><strong>spaCy:</strong> Advanced NLP and entity recognition</li>
+                            <li><strong>Custom Pipeline:</strong> Optimized text analysis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-brain text-success me-2"></i>Machine Learning
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li><strong>scikit-learn:</strong> Intent classification</li>
+                            <li><strong>TF-IDF:</strong> Feature extraction</li>
+                            <li><strong>Logistic Regression:</strong> High-accuracy predictions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h3 class="mt-5 mb-3">Key Features</h3>
+        <div class="row g-4 mb-4">
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-user-shield text-white fa-2x"></i>
+                    </div>
+                    <h5>Complete Privacy</h5>
+                    <p class="text-muted">No external API calls, no data logging, all processing happens on your device.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-tachometer-alt text-white fa-2x"></i>
+                    </div>
+                    <h5>Fast Response</h5>
+                    <p class="text-muted">Optimized ML models provide instant responses with high accuracy rates.</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="text-center">
+                    <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                        <i class="fas fa-code text-white fa-2x"></i>
+                    </div>
+                    <h5>Open Source</h5>
+                    <p class="text-muted">Built with transparent, open-source technologies you can trust.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5 mb-3">How It Works</h3>
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <span class="text-white fw-bold">1</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <h5>Input Processing</h5>
+                        <p class="mb-0">Your message is tokenized and cleaned using NLTK and spaCy's advanced NLP capabilities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <span class="text-white fw-bold">2</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <h5>Intent Recognition</h5>
+                        <p class="mb-0">Our trained ML model analyzes your text to understand what you're asking about.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card border-0 shadow-sm mb-4">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-2 text-center">
+                        <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <span class="text-white fw-bold">3</span>
+                        </div>
+                    </div>
+                    <div class="col-md-10">
+                        <h5>Response Generation</h5>
+                        <p class="mb-0">Based on the identified intent, the system generates an appropriate, contextual response.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="mt-5 mb-3">Supported Intents</h3>
+        <p>Our AI assistant can help you with:</p>
+        <div class="row">
+            <div class="col-md-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>General greetings and conversation</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Service inquiries and information</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Contact and support requests</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Pricing and payment questions</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Technical support issues</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Account management queries</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Booking and appointment scheduling</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>General information requests</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Feedback and suggestions</li>
+                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>Polite conversation endings</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a href="{{ url_for('chatbot.chat_interface') }}" class="btn btn-ai-primary btn-lg">
+                <i class="fas fa-comments me-2"></i>Try It Now
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

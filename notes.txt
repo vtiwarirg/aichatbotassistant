@@ -1,0 +1,29 @@
+flask --app index run
+
+https://flask.palletsprojects.com/en/stable/quickstart/#a-minimal-application
+
+
+High: https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif
+
+Low: https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif
+
+Correct: https://media.giphy.com/media/4T7e4DmcrP9du/giphy.gif
+
+
+document.body.contentEditable = true
+
+Michael Feinberg
+
+Jonathan Neubauer
+
+Rajkumar Shivapooshanam
+
+https://genderize.io/documentation
+
+https://gist.github.com/TheMuellenator/d129237aa5fb2f1b16d6003e0f24c1f1
+https://gist.github.com/TheMuellenator/626eb26f39be3603e3d0fe4f969efd47
+https://gist.github.com/TheMuellenator/3a621f81bc80d241d0ec020a60f8382d
+https://jinja.palletsprojects.com/en/3.0.x/templates/#variables
+https://jinja.palletsprojects.com/en/3.0.x/templates/#for
+
+gmail app pass: nmty puqm fwwp hhcy

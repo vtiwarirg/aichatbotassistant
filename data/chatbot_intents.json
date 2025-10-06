@@ -1,0 +1,403 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hello",
+        "Hi",
+        "Hey",
+        "Good morning",
+        "Good afternoon",
+        "Good evening",
+        "What's up",
+        "Howdy",
+        "Greetings",
+        "Hi there",
+        "Hello there",
+        "How are you",
+        "Good day",
+        "What's your name?"
+      ],
+      "responses": [
+        "Hello! Welcome to our AI assistant. I'm here to help with customer support, HR questions, IT issues, and general inquiries. How can I assist you today?",
+        "Hi there! Thanks for reaching out. I can help with various business needs including technical support, HR policies, and customer service. What do you need help with?",
+        "Welcome! I'm your virtual assistant ready to help with customer support, IT helpdesk, HR inquiries, and more. How may I assist you?",
+        "Hello! Great to connect with you. I can provide support across multiple departments. What can I help you with today?",
+        "Hi! I'm here to assist with your business needs. Whether it's technical support, HR questions, or general inquiries, I'm ready to help!",
+        "Hi! I'm your AI Chatbot Assistant. I'm designed to help with customer support, technical issues, HR questions, and general business inquiries. What can I help you with today?"
+      ]
+    },
+    
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Goodbye",
+        "Bye",
+        "See you later",
+        "See you",
+        "Thanks",
+        "Thank you",
+        "Farewell",
+        "Until next time",
+        "Take care",
+        "Have a good day",
+        "Catch you later",
+        "That's all",
+        "I'm done",
+        "End chat"
+      ],
+      "responses": [
+        "Thank you for using our AI assistant! If you need further help with customer support, HR, or IT issues, feel free to reach out anytime.",
+        "Goodbye! Remember, I'm available 24/7 for any business support needs. Have a great day!",
+        "Thanks for chatting! Don't hesitate to return if you need assistance with any business inquiries.",
+        "Take care! I'm always here to help with customer service, technical support, or HR questions.",
+        "See you later! Feel free to contact me anytime for business support needs."
+      ]
+    },
+
+    {
+      "tag": "services",
+      "patterns": [
+        "What services do you offer",
+        "What do you do",
+        "Tell me about your services",
+        "What can you help me with",
+        "What services are available",
+        "What kind of support do you provide",
+        "What are your capabilities",
+        "How can you assist me",
+        "What departments do you support",
+        "What business functions do you handle"
+      ],
+      "responses": [
+        "I provide comprehensive business support including: Customer Service inquiries, HR policy questions, IT helpdesk support, account management, billing assistance, and general business information. What specific area do you need help with?",
+        "Our AI assistant covers multiple business domains: Technical Support, Human Resources, Customer Service, Billing & Accounts, Product Information, and General Business Inquiries. How can I assist you today?",
+        "I'm equipped to help with various business needs including customer support, employee assistance, technical troubleshooting, account management, and policy questions. What would you like to know about?",
+        "I offer support across Customer Service, IT Helpdesk, HR Department, Billing, Product Support, and Business Operations. Which area interests you?"
+      ]
+    },
+
+    {
+      "tag": "contact",
+      "patterns": [
+        "How can I contact you",
+        "Contact information",
+        "How to reach you",
+        "Email address",
+        "Phone number",
+        "How to get in touch",
+        "Contact details",
+        "Reach out",
+        "Customer service number",
+        "Support email",
+        "Business contact",
+        "Office location"
+      ],
+      "responses": [
+        "You can reach our support team via: Email: support@company.com, Phone: 1-800-SUPPORT, or through our online contact form. For urgent IT issues, use our priority support line.",
+        "For immediate assistance: Live Chat (24/7), Email: help@company.com, Phone: 1-800-123-HELP. HR inquiries can be directed to hr@company.com.",
+        "Contact options: Customer Service: 1-800-CUSTOMER, IT Support: 1-800-TECH-HELP, HR Department: 1-800-HR-HELP, or email us at info@company.com.",
+        "Multiple ways to reach us: Online chat (available now), Email support, Phone support (Mon-Fri 8AM-8PM), and our mobile app support feature."
+      ]
+    },
+
+    {
+      "tag": "business_hours",
+      "patterns": [
+        "What are your business hours",
+        "When are you open",
+        "What time do you work",
+        "Are you available",
+        "Working hours",
+        "Office hours",
+        "When can I reach you",
+        "Support hours",
+        "Customer service hours",
+        "When is help available"
+      ],
+      "responses": [
+        "Our support hours: Customer Service (24/7), IT Helpdesk (Mon-Fri 6AM-10PM EST), HR Department (Mon-Fri 8AM-6PM EST), Billing Support (Mon-Fri 7AM-7PM EST).",
+        "Business Hours: Main Office (Mon-Fri 8AM-6PM EST), Technical Support (24/7), Customer Service (24/7), HR (Mon-Fri 8AM-5PM EST).",
+        "We're here when you need us: 24/7 AI Assistant, Emergency IT Support (24/7), Regular Support (Mon-Sun 6AM-11PM EST), HR (Business days 8AM-6PM EST).",
+        "Support availability: Always-on AI assistance, Live agents (Mon-Sun 7AM-9PM EST), Specialized departments during business hours (8AM-6PM EST)."
+      ]
+    },
+
+    {
+      "tag": "account",
+      "patterns": [
+        "Account issues",
+        "Login problems",
+        "Password reset",
+        "Account access",
+        "Forgot password",
+        "Can't log in",
+        "Account locked",
+        "Username issues",
+        "Account security",
+        "Profile settings",
+        "Account information",
+        "Update account"
+      ],
+      "responses": [
+        "For account issues: 1) Try password reset via 'Forgot Password' link, 2) Clear browser cache, 3) Check account status, 4) Contact IT support at it-help@company.com for persistent issues.",
+        "Account troubleshooting steps: Reset password using your email, check for account lockouts, verify your username, and ensure your browser accepts cookies. Need more help? Contact our IT team.",
+        "Common account solutions: Use the password reset feature, try a different browser, check your email for account notifications, or call our IT helpdesk at 1-800-IT-SUPPORT.",
+        "Account assistance available: Self-service password reset, account unlock requests, profile updates through your dashboard, or contact our support team for complex issues."
+      ]
+    },
+
+    {
+      "tag": "billing",
+      "patterns": [
+        "Billing questions",
+        "Invoice issues",
+        "Payment problems",
+        "Refund request",
+        "Billing cycle",
+        "Payment methods",
+        "Charges on account",
+        "Billing address",
+        "Payment history",
+        "Outstanding balance",
+        "Payment due date",
+        "Billing support"
+      ],
+      "responses": [
+        "Billing support available: View invoices in your account portal, update payment methods online, request refunds through customer service, or call billing at 1-800-BILLING for urgent matters.",
+        "For billing inquiries: Check your account dashboard for invoices, payment history, and due dates. Update billing info online or contact our billing team at billing@company.com.",
+        "Billing assistance: Online account management, automatic payment setup, billing dispute resolution, and payment plan options. Contact billing support for personalized help.",
+        "Billing help: Access statements online, set up autopay, dispute charges, request payment extensions, or speak with our billing specialists during business hours."
+      ]
+    },
+
+    {
+      "tag": "technical_support",
+      "patterns": [
+        "Technical issue",
+        "System not working",
+        "Software problem",
+        "Application error",
+        "Technical help",
+        "IT support",
+        "System down",
+        "Network issues",
+        "Computer problems",
+        "Software bug",
+        "System error",
+        "Technical assistance"
+      ],
+      "responses": [
+        "Technical support steps: 1) Restart your application/device, 2) Check network connection, 3) Clear cache/cookies, 4) Update software if needed. Still having issues? Contact IT at it-support@company.com.",
+        "IT troubleshooting: Try restarting your system, check for updates, verify network connectivity, and document any error messages. For complex issues, submit a ticket or call IT support.",
+        "Technical assistance available: Self-help guides in our knowledge base, remote support sessions, on-site IT support (for business customers), and 24/7 emergency technical support.",
+        "For technical problems: Use our diagnostic tools, check system status page, try basic troubleshooting, or contact our technical support team who can provide remote assistance."
+      ]
+    },
+
+    {
+      "tag": "hr_policies",
+      "patterns": [
+        "HR policies",
+        "Employee handbook",
+        "Company policies",
+        "Leave policies",
+        "Vacation time",
+        "Sick leave",
+        "Benefits information",
+        "Employee benefits",
+        "PTO policy",
+        "Maternity leave",
+        "Health insurance",
+        "Retirement plan"
+      ],
+      "responses": [
+        "HR information available: Employee handbook on our intranet, benefits portal for health/retirement plans, leave request system, and HR support at hr@company.com for policy questions.",
+        "HR resources: Access your benefits portal, view leave balances online, download policy documents, schedule HR consultations, or call HR at 1-800-HR-HELP for immediate assistance.",
+        "Employee support: Comprehensive benefits information, leave management system, policy clarifications, workplace support services, and confidential HR consultation available.",
+        "HR assistance: Self-service employee portal, benefits enrollment, leave requests, policy guidance, workplace issue resolution, and direct HR representative support."
+      ]
+    },
+
+    {
+      "tag": "product_support",
+      "patterns": [
+        "Product issues",
+        "How to use product",
+        "Product features",
+        "Product troubleshooting",
+        "Product information",
+        "User manual",
+        "Product guide",
+        "Feature questions",
+        "Product help",
+        "Product documentation"
+      ],
+      "responses": [
+        "Product support resources: Online user manuals, video tutorials, FAQ sections, feature guides, and live product specialists available during business hours.",
+        "Product assistance: Comprehensive documentation library, interactive tutorials, community forums, product training sessions, and direct specialist support.",
+        "Product help available: Step-by-step guides, troubleshooting wizards, feature demonstrations, best practice recommendations, and personalized product consultation.",
+        "Product support options: Self-help documentation, video training library, user community, expert chat support, and scheduled product training sessions."
+      ]
+    },
+
+    {
+      "tag": "shipping",
+      "patterns": [
+        "Shipping information",
+        "Delivery status",
+        "Track order",
+        "Shipping cost",
+        "Delivery time",
+        "Express shipping",
+        "International shipping",
+        "Shipping options",
+        "Order tracking",
+        "Delivery issues"
+      ],
+      "responses": [
+        "Shipping services: Track orders online with your order number, view shipping options during checkout, estimate delivery times, and contact shipping support for delivery issues.",
+        "Delivery information: Real-time order tracking, multiple shipping speed options, international delivery available, delivery notifications via email/SMS, and shipping insurance options.",
+        "Shipping support: Online tracking system, delivery scheduling, address change requests, shipping upgrades, and resolution for delivery problems or delays.",
+        "Shipping assistance: Order status updates, delivery preferences, shipping cost calculator, expedited shipping options, and dedicated shipping customer service."
+      ]
+    },
+
+    {
+      "tag": "returns",
+      "patterns": [
+        "Return policy",
+        "Return item",
+        "Refund process",
+        "Exchange product",
+        "Return shipping",
+        "Return status",
+        "Warranty claim",
+        "Product exchange",
+        "Return authorization",
+        "Defective product"
+      ],
+      "responses": [
+        "Return process: Initiate returns online within 30 days, print prepaid return labels, track return status, and expect refunds within 5-7 business days after receipt.",
+        "Return assistance: Easy online return requests, free return shipping on defective items, exchange options available, warranty support, and dedicated returns team.",
+        "Returns & exchanges: 30-day return window, original packaging preferred, refund to original payment method, exchange for different sizes/colors, and quality guarantee.",
+        "Return support: Self-service return portal, instant return authorizations, prepaid shipping labels, return tracking, and customer service for return questions."
+      ]
+    },
+
+    {
+      "tag": "security",
+      "patterns": [
+        "Security concerns",
+        "Data security",
+        "Privacy policy",
+        "Account security",
+        "Password security",
+        "Data protection",
+        "Security breach",
+        "Suspicious activity",
+        "Privacy questions",
+        "Data usage"
+      ],
+      "responses": [
+        "Security information: We use enterprise-grade encryption, regular security audits, strict privacy policies, and 24/7 monitoring. Report security concerns to security@company.com immediately.",
+        "Data protection: Your information is encrypted, stored securely, never sold to third parties, and you control your privacy settings. View our privacy policy for complete details.",
+        "Security support: Two-factor authentication available, regular password updates recommended, account activity monitoring, and immediate response to security incidents.",
+        "Privacy & security: Comprehensive data protection, transparent privacy practices, security incident response team, and tools to manage your data preferences."
+      ]
+    },
+
+    {
+      "tag": "complaints",
+      "patterns": [
+        "File complaint",
+        "Complaint process",
+        "Unsatisfied with service",
+        "Poor experience",
+        "Service complaint",
+        "Quality issues",
+        "Complaint department",
+        "Escalate issue",
+        "Manager request",
+        "Feedback complaint"
+      ],
+      "responses": [
+        "Complaint resolution: Submit formal complaints through our online form, speak with a manager, escalate through our resolution process, and receive follow-up within 24-48 hours.",
+        "We take complaints seriously: Multiple reporting channels available, dedicated resolution team, management escalation process, and commitment to resolving issues promptly.",
+        "Complaint support: Online complaint portal, direct manager contact, escalation procedures, investigation process, and follow-up communication throughout resolution.",
+        "Issue resolution: Formal complaint process, rapid response commitment, senior staff involvement, corrective action plans, and satisfaction follow-up surveys."
+      ]
+    },
+
+    {
+      "tag": "emergency",
+      "patterns": [
+        "Emergency",
+        "Urgent issue",
+        "Critical problem",
+        "System down",
+        "Emergency support",
+        "Crisis",
+        "Immediate help",
+        "Urgent assistance",
+        "Emergency contact",
+        "Critical support"
+      ],
+      "responses": [
+        "EMERGENCY SUPPORT: For critical issues call our 24/7 emergency line at 1-800-EMERGENCY, use priority chat support, or email emergency@company.com for immediate escalation.",
+        "Emergency assistance available: 24/7 critical support hotline, instant escalation procedures, emergency response team, and priority handling for urgent business issues.",
+        "For urgent matters: Emergency support line (available 24/7), priority ticket system, executive escalation process, and rapid response guarantee for critical issues.",
+        "Emergency protocols: Immediate support channels, crisis management team, emergency escalation procedures, and commitment to rapid resolution of critical issues."
+      ]
+    },
+
+    {
+      "tag": "pricing",
+      "patterns": [
+        "How much does it cost",
+        "What are your prices",
+        "Pricing information",
+        "Cost estimate",
+        "How expensive",
+        "Budget",
+        "Quote",
+        "Price range",
+        "How much do you charge",
+        "Pricing plans",
+        "Cost of services",
+        "Rates",
+        "Subscription cost"
+      ],
+      "responses": [
+        "Pricing information: View current rates on our website, request custom quotes online, compare service plans, and contact sales for enterprise pricing discussions.",
+        "Cost details: Transparent pricing structure, multiple service tiers, custom enterprise solutions, volume discounts available, and no hidden fees policy.",
+        "Pricing support: Online quote calculator, service plan comparisons, bulk pricing options, payment plan availability, and dedicated pricing specialists.",
+        "Rate information: Competitive pricing structure, flexible payment terms, service package options, and personalized quotes based on your specific needs."
+      ]
+    },
+
+    {
+      "tag": "help",
+      "patterns": [
+        "Help",
+        "I need help",
+        "Can you help me",
+        "Support",
+        "Assistance",
+        "I'm confused",
+        "I don't understand",
+        "Explain",
+        "Guide me",
+        "What can you do",
+        "How does this work",
+        "I'm lost"
+      ],
+      "responses": [
+        "I'm here to help! I can assist with: Customer Service questions, IT/Technical support, HR policies & benefits, Account management, Billing inquiries, Product support, and General business information. What do you need help with?",
+        "Happy to assist! I provide support for: Technical troubleshooting, Account issues, Billing questions, HR policies, Product information, Shipping & returns, and General inquiries. How can I help you today?",
+        "Comprehensive support available: Customer service, Technical support, Human resources, Billing assistance, Product guidance, Security questions, and Emergency support. What area interests you?",
+        "I'm your virtual assistant for all business needs: Customer support, IT helpdesk, HR assistance, Account management, Product help, and General inquiries. What can I help you with right now?"
+      ]
+    }
+  ]
+}
