@@ -104,12 +104,23 @@ python -m spacy download en_core_web_sm
 
 ### 5. Train the ML Model (Optional - pre-trained model included)
 ```bash
-flask train-chatbot
+# Option 1: Using Flask CLI
+python -m flask --app app.py train-chatbot
+
+# Option 2: Using management script (recommended)
+python manage.py train
 ```
 
 ### 6. Run the Application
 ```bash
+# Option 1: Using main app file
 python app.py
+
+# Option 2: Using run script
+python run.py
+
+# Option 3: Using management script (recommended)
+python manage.py start
 ```
 
 The AI chatbot will be available at: `http://127.0.0.1:5000`
@@ -118,7 +129,11 @@ The AI chatbot will be available at: `http://127.0.0.1:5000`
 
 ### Test Chatbot Functionality
 ```bash
-flask test-chatbot
+# Option 1: Using Flask CLI
+python -m flask --app app.py test-ml
+
+# Option 2: Using management script (recommended)
+python manage.py test-ml
 ```
 
 ### Test Sample Conversations
@@ -161,7 +176,11 @@ Edit `data/chatbot_intents.json` to:
 ### Retraining the Model
 After modifying intents:
 ```bash
-flask train-chatbot
+# Option 1: Using Flask CLI
+python -m flask --app app.py train-chatbot
+
+# Option 2: Using management script (recommended)
+python manage.py train
 ```
 
 ## 🛠 API Endpoints
@@ -236,8 +255,8 @@ GET /api/health
 ### Adding New Intents
 1. Edit `data/chatbot_intents.json`
 2. Add patterns and responses for new intent
-3. Retrain model: `flask train-chatbot`
-4. Test with new queries
+3. Retrain model: `python manage.py train`
+4. Test with new queries: `python manage.py test-ml`
 
 ### Customizing NLP Pipeline
 Modify `services/nlp_processor.py` to:
@@ -290,5 +309,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ---
 
-**No OpenAI API keys required. No external dependencies. Complete privacy protection.**#   a i c h a t b o t a s s i s t a n t  
+**No OpenAI API keys required. No external dependencies. Complete privacy protection.**#   a i c h a t b o t a s s i s t a n t 
+ 
  

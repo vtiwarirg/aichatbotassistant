@@ -1,152 +1,40 @@
 {% extends "base.html" %}
 
-{% block title %}{{ site_name or 'AI Chatbot Assistant' }} - Home{% endblock %}
-
-{% block page_title %}Intelligent AI Assistant{% endblock %}
-{% block page_subtitle %}Experience the power of machine learning with our privacy-focused AI chatbot{% endblock %}
-
 {% block content %}
-<div class="text-center mb-5">
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <h2 class="ai-text-gradient mb-4">
-                <i class="fas fa-robot me-2"></i>Local AI Chatbot
-            </h2>
-            <p class="lead text-muted mb-4">
-                Get instant, intelligent responses without any external dependencies or data collection.
-                Powered by NLTK, spaCy, and scikit-learn for advanced natural language processing.
-            </p>
-            
-            <div class="d-grid gap-2 d-md-flex justify-content-md-center mb-5">
-                <a href="{{ url_for('chatbot.chat_interface') }}" class="btn btn-ai-primary btn-lg me-md-2">
-                    <i class="fas fa-comments me-2"></i>Start Chatting
-                </a>
-                <a href="{{ url_for('chatbot.about') }}" class="btn btn-outline-secondary btn-lg">
-                    <i class="fas fa-info-circle me-2"></i>Learn More
-                </a>
-            </div>
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="text-center mb-5">
+            <h1>Welcome to {{ site_name }}</h1>
+            <p class="lead">Your AI-powered business assistant</p>
         </div>
-    </div>
-</div>
 
-<!-- Features Section -->
-<div class="row g-4 mb-5">
-    <div class="col-md-4">
-        <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body text-center">
-                <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                    <i class="fas fa-brain text-white fa-lg"></i>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Start Chatting</h5>
+                        <p class="card-text">Get instant help with customer support, HR questions, and IT issues.</p>
+                        <a href="/chat" class="btn btn-primary">Open Chat</a>
+                    </div>
                 </div>
-                <h5 class="card-title">Machine Learning Powered</h5>
-                <p class="card-text text-muted">
-                    Uses advanced NLP and ML algorithms including NLTK, spaCy, and scikit-learn for intelligent conversations.
-                </p>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">System Status</h5>
+                        <p class="card-text">
+                            {% if chatbot_available %}
+                                <span class="text-success">✓ Chatbot Available</span><br>
+                                <small>{{ intents_count }} intents loaded</small>
+                            {% else %}
+                                <span class="text-warning">⚠ Basic Mode</span><br>
+                                <small>Limited responses available</small>
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    
-    <div class="col-md-4">
-        <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body text-center">
-                <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                    <i class="fas fa-shield-alt text-white fa-lg"></i>
-                </div>
-                <h5 class="card-title">Privacy Focused</h5>
-                <p class="card-text text-muted">
-                    All processing happens locally. No external API calls, no data collection, complete privacy protection.
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="col-md-4">
-        <div class="card h-100 border-0 shadow-sm">
-            <div class="card-body text-center">
-                <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                    <i class="fas fa-bolt text-white fa-lg"></i>
-                </div>
-                <h5 class="card-title">Fast & Reliable</h5>
-                <p class="card-text text-muted">
-                    Lightning-fast responses with high accuracy intent recognition and intelligent fallback systems.
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Status Section -->
-{% if chatbot_available %}
-<div class="alert alert-success border-0 rounded-3 mb-5" role="alert">
-    <div class="row align-items-center">
-        <div class="col-auto">
-            <i class="fas fa-check-circle fa-2x"></i>
-        </div>
-        <div class="col">
-            <h5 class="alert-heading mb-1">AI Assistant is Online</h5>
-            <p class="mb-0">All systems operational. Ready to assist you with intelligent conversations.</p>
-        </div>
-        <div class="col-auto">
-            <a href="{{ url_for('chatbot.chat_interface') }}" class="btn btn-success">
-                <i class="fas fa-play me-1"></i>Start Now
-            </a>
-        </div>
-    </div>
-</div>
-{% else %}
-<div class="alert alert-warning border-0 rounded-3 mb-5" role="alert">
-    <div class="row align-items-center">
-        <div class="col-auto">
-            <i class="fas fa-exclamation-triangle fa-2x"></i>
-        </div>
-        <div class="col">
-            <h5 class="alert-heading mb-1">AI Assistant Unavailable</h5>
-            <p class="mb-0">The chatbot service is currently offline. Please check back later.</p>
-        </div>
-        <div class="col-auto">
-            <a href="{{ url_for('chatbot.health_check') }}" class="btn btn-warning">
-                <i class="fas fa-tools me-1"></i>Check Status
-            </a>
-        </div>
-    </div>
-</div>
-{% endif %}
-
-<!-- How It Works Section -->
-<div class="row mb-5">
-    <div class="col-lg-8 mx-auto">
-        <h3 class="text-center mb-4">How It Works</h3>
-        <div class="row g-3">
-            <div class="col-md-4 text-center">
-                <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 40px; height: 40px;">
-                    <span class="text-white fw-bold">1</span>
-                </div>
-                <h6>Type Your Message</h6>
-                <small class="text-muted">Ask questions in natural language</small>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 40px; height: 40px;">
-                    <span class="text-white fw-bold">2</span>
-                </div>
-                <h6>AI Processing</h6>
-                <small class="text-muted">ML algorithms analyze your intent</small>
-            </div>
-            <div class="col-md-4 text-center">
-                <div class="ai-gradient rounded-circle d-inline-flex align-items-center justify-content-center mb-2" style="width: 40px; height: 40px;">
-                    <span class="text-white fw-bold">3</span>
-                </div>
-                <h6>Get Response</h6>
-                <small class="text-muted">Receive intelligent, contextual answers</small>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- CTA Section -->
-<div class="text-center bg-light rounded-3 p-5">
-    <h4 class="mb-3">Ready to Experience AI Conversation?</h4>
-    <p class="text-muted mb-4">Join thousands of users who trust our local AI assistant for intelligent, privacy-focused conversations.</p>
-    <a href="{{ url_for('chatbot.chat_interface') }}" class="btn btn-ai-primary btn-lg">
-        <i class="fas fa-rocket me-2"></i>Start Your First Chat
-    </a>
 </div>
 {% endblock %}

@@ -1,414 +1,443 @@
+"""
+Optimized ML Chatbot Service with clean architecture
+Handles ML-powered conversation with proper separation of concerns
+"""
 import json
 import logging
-import random
 import os
 from datetime import datetime
-from typing import Dict, Optional, Any, List
-from config.config import Config
-from services.nlp_processor import NLPProcessor
-from services.intent_classifier import IntentClassifier
+from typing import Dict, List, Optional, Any
+from dataclasses import dataclass
 
 logger = logging.getLogger(__name__)
 
+@dataclass
+class ChatResponse:
+    """Structured chat response data"""
+    response: str
+    intent: str
+    confidence: float
+    response_type: str
+    entities: List = None
+    sentiment: Dict = None
+    success: bool = True
+    
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            'response': self.response,
+            'intent': self.intent,
+            'confidence': self.confidence,
+            'response_type': self.response_type,
+            'entities': self.entities or [],
+            'sentiment': self.sentiment or {},
+            'success': self.success
+        }
+
 class MLChatbotService:
-    """Advanced ML-powered chatbot using NLTK, spaCy, and scikit-learn"""
+    """
+    Optimized ML-powered chatbot service with clean architecture
+    Handles intent classification, response generation, and conversation logging
+    """
     
-    def __init__(self):
-        self.config = Config()
-        logger.info("Initializing ML Chatbot Service")
+    def __init__(self, intents_file: str = None):
+        """Initialize the ML chatbot service"""
+        self.intents_file = intents_file or 'data/chatbot_intents.json'
+        self.confidence_threshold = 0.3
+        self._initialized = False
+        self._available = False
         
-        # Initialize NLP processor
-        self.nlp_processor = NLPProcessor()
+        # Service components
+        self.intent_classifier = None
+        self.nlp_processor = None
+        self.response_generator = None
+        self.conversation_logger = None
+        self.dynamic_handler = None
         
-        # Initialize intent classifier
-        self.intent_classifier = IntentClassifier(self.config.CHATBOT_MODEL_PATH)
-        
-        # Load intents and responses
-        self.intents_data = self._load_intents_data()
-        self.responses_by_intent = self._build_response_mapping()
-        
-        # Initialize AI provider if enabled
-        self.ai_enabled = self.config.CHATBOT_USE_AI
-        self.ml_enabled = self.config.CHATBOT_USE_ML
-        self.ai_provider = None
-        
-        if self.ai_enabled:
-            self._initialize_ai_provider()
-        
-        # Train or load ML model
-        if self.ml_enabled:
-            self._setup_ml_model()
-        
-        logger.info("ML Chatbot Service initialized successfully")
+        # Initialize the service
+        self._initialize_service()
     
-    def _load_intents_data(self):
-        """Load intents data from JSON file"""
+    def _initialize_service(self):
+        """Initialize all service components"""
         try:
-            intents_path = self.config.CHATBOT_INTENTS_FILE
-            if not os.path.exists(intents_path):
-                logger.error(f"Intents file not found: {intents_path}")
-                return None
+            logger.info("Initializing ML Chatbot Service...")
             
-            with open(intents_path, 'r', encoding='utf-8') as file:
-                data = json.load(file)
+            # Initialize NLP processor
+            from .nlp_processor import NLPProcessor
+            self.nlp_processor = NLPProcessor()
             
-            logger.info(f"Loaded {len(data.get('intents', []))} intents from {intents_path}")
-            return data
+            # Initialize intent classifier
+            from .intent_classifier import IntentClassifier
+            self.intent_classifier = IntentClassifier()
+            
+            # Load or train model
+            if not self._load_or_train_model():
+                raise Exception("Failed to load or train ML model")
+            
+            # Initialize response generator
+            from .response_generator import ResponseGenerator
+            self.response_generator = ResponseGenerator(self.intents_file)
+            
+            # Initialize conversation logger
+            from .conversation_logger import ConversationLogger
+            self.conversation_logger = ConversationLogger()
+            
+            # Initialize dynamic response handler
+            from .dynamic_response_handler import DynamicResponseHandler
+            self.dynamic_handler = DynamicResponseHandler()
+            
+            self._available = True
+            self._initialized = True
+            
+            logger.info("ML Chatbot Service initialized successfully")
             
         except Exception as e:
-            logger.error(f"Error loading intents data: {e}")
-            return None
+            logger.error(f"Failed to initialize ML Chatbot Service: {e}")
+            self._available = False
+            self._initialized = False
     
-    def _build_response_mapping(self):
-        """Build mapping from intent tags to responses"""
-        if not self.intents_data:
-            return {}
-        
-        response_mapping = {}
-        for intent in self.intents_data.get('intents', []):
-            tag = intent.get('tag')
-            responses = intent.get('responses', [])
-            if tag and responses:
-                response_mapping[tag] = responses
-        
-        logger.info(f"Built response mapping for {len(response_mapping)} intents")
-        return response_mapping
-    
-    def _setup_ml_model(self):
-        """Setup ML model - train if needed or load existing"""
+    def _load_or_train_model(self) -> bool:
+        """Load existing model or train new one"""
         try:
-            # Try to load existing model first
-            if not self.intent_classifier.load_model():
-                logger.info("No existing model found. Training new model...")
-                
-                # Train new model
+            # Try to load existing model
+            if self.intent_classifier.load_model():
+                logger.info("Existing ML model loaded successfully")
+                return True
+            
+            # Train new model if none exists
+            logger.info("Training new ML model...")
+            if os.path.exists(self.intents_file):
                 success = self.intent_classifier.train_model(
-                    self.config.CHATBOT_INTENTS_FILE,
-                    self.config.CHATBOT_ML_MODEL_TYPE
+                    self.intents_file, 
+                    model_type='logistic_regression'
                 )
-                
                 if success:
-                    logger.info("ML model trained successfully")
+                    logger.info("New ML model trained successfully")
+                    return True
                 else:
                     logger.error("Failed to train ML model")
-                    self.ml_enabled = False
+                    return False
             else:
-                logger.info("ML model loaded successfully")
+                logger.error(f"Intents file not found: {self.intents_file}")
+                return False
                 
         except Exception as e:
-            logger.error(f"Error setting up ML model: {e}")
-            self.ml_enabled = False
+            logger.error(f"Error loading or training model: {e}")
+            return False
     
-    def _initialize_ai_provider(self):
-        """Initialize AI provider if needed"""
-        if not self.ai_enabled:
-            return
+    def get_response(self, user_message: str, session_id: str = 'default') -> Dict[str, Any]:
+        """
+        Get chatbot response for user message
         
-        provider = self.config.CHATBOT_AI_PROVIDER.lower()
-        print(f"Initializing AI provider: {provider}")
+        Args:
+            user_message: User's input message
+            session_id: Session identifier for conversation tracking
+            
+        Returns:
+            Dict containing response data
+        """
+        if not self.is_available():
+            return self._get_fallback_response("Service unavailable").to_dict()
+        
         try:
-            if provider == 'openai' and self.config.OPENAI_API_KEY:
-                self._initialize_openai()
-            elif provider == 'ollama':
-                self._initialize_ollama()
-            elif provider == 'huggingface':
-                self._initialize_huggingface()
+            # Validate input
+            if not user_message or not user_message.strip():
+                return self._get_fallback_response("Empty message").to_dict()
+            
+            # Process message with NLP
+            processed_data = self._process_message(user_message.strip())
+            
+            # Classify intent
+            intent_result = self._classify_intent(processed_data['processed_text'])
+            
+            # Generate response
+            response = self._generate_response(
+                user_message=user_message,
+                processed_data=processed_data,
+                intent_result=intent_result
+            )
+            
+            # Log conversation
+            self._log_conversation(user_message, response, session_id)
+            
+            return response.to_dict()
+            
+        except Exception as e:
+            logger.error(f"Error processing message: {e}")
+            return self._get_error_response().to_dict()
+    
+    def _process_message(self, message: str) -> Dict[str, Any]:
+        """Process message with NLP"""
+        try:
+            if self.nlp_processor:
+                return self.nlp_processor.process_text(message)
             else:
-                logger.warning(f"AI provider '{provider}' not available or not configured.")
-                self.ai_enabled = False
-        except Exception as e:
-            logger.warning(f"Failed to initialize AI provider '{provider}': {e}")
-            self.ai_enabled = False
-    
-    def _initialize_openai(self):
-        """Initialize OpenAI client"""
-        try:
-            import openai
-            openai.api_key = self.config.OPENAI_API_KEY
-            self.ai_provider = 'openai'
-            logger.info("OpenAI provider initialized")
-        except ImportError:
-            logger.warning("OpenAI library not installed")
-            raise
-    
-    def _initialize_ollama(self):
-        """Initialize Ollama client"""
-        try:
-            import requests
-            response = requests.get(f"{self.config.OLLAMA_BASE_URL}/api/tags", timeout=5)
-            if response.status_code == 200:
-                self.ai_provider = 'ollama'
-                logger.info("Ollama provider initialized")
-            else:
-                raise ConnectionError("Ollama server not responding")
-        except (ImportError, ConnectionError, requests.RequestException) as e:
-            logger.warning(f"Ollama not available: {e}")
-            raise
-    
-    def _initialize_huggingface(self):
-        """Initialize Hugging Face transformers"""
-        try:
-            from transformers import pipeline
-            self.ai_pipeline = pipeline("text-generation", model="microsoft/DialoGPT-medium")
-            self.ai_provider = 'huggingface'
-            logger.info("Hugging Face provider initialized")
-        except ImportError:
-            logger.warning("Transformers library not installed")
-            raise
-    
-    def get_response(self, user_message: str, session_id: str = None, chat_history: List = None) -> Dict[str, Any]:
-        """Main method to get chatbot response"""
-        try:
-            logger.info(f"Processing message: '{user_message}'")
-            
-            # Preprocess the message
-            processed_message = self.nlp_processor.preprocess_text(user_message)
-            
-            # Try ML-based intent classification first
-            if self.ml_enabled:
-                response = self._get_ml_response(user_message, processed_message)
-                if response:
-                    return response
-            
-            # Fallback to rule-based response
-            response = self._get_rule_based_response(user_message, processed_message)
-            if response:
-                return response
-            
-            # Final fallback to AI if available
-            if self.ai_enabled:
-                return self._get_ai_response(user_message, session_id, chat_history)
-            
-            # Ultimate fallback
-            return self._get_fallback_response()
-            
-        except Exception as e:
-            logger.error(f"Error getting chatbot response: {e}")
-            return self._get_fallback_response()
-    
-    def _get_ml_response(self, original_message: str, processed_message: str) -> Optional[Dict[str, Any]]:
-        """Get response using ML intent classification"""
-        try:
-            # Predict intent
-            predicted_intent, confidence = self.intent_classifier.predict_intent(
-                original_message, 
-                self.config.CHATBOT_CONFIDENCE_THRESHOLD
-            )
-            
-            if predicted_intent and confidence >= self.config.CHATBOT_CONFIDENCE_THRESHOLD:
-                # Get responses for this intent
-                responses = self.responses_by_intent.get(predicted_intent, [])
-                if responses:
-                    response_text = random.choice(responses)
-                    
-                    # Add some entity extraction for personalization
-                    entities = self.nlp_processor.extract_entities(original_message)
-                    
-                    return {
-                        'response': response_text,
-                        'type': f'ml_intent_{predicted_intent}',
-                        'confidence': confidence,
-                        'intent': predicted_intent,
-                        'entities': entities,
-                        'timestamp': datetime.now().isoformat()
-                    }
-            
-            logger.info(f"ML prediction below threshold: intent={predicted_intent}, confidence={confidence}")
-            return None
-            
-        except Exception as e:
-            logger.error(f"Error in ML response generation: {e}")
-            return None
-    
-    def _get_rule_based_response(self, original_message: str, processed_message: str) -> Optional[Dict[str, Any]]:
-        """Enhanced rule-based responses as fallback"""
-        message_lower = original_message.lower()
-        
-        # Enhanced keyword matching with similarity
-        intent_keywords = {
-            'greeting': ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening'],
-            'goodbye': ['bye', 'goodbye', 'see you', 'thanks', 'thank you', 'farewell'],
-            'services': ['service', 'services', 'what do you do', 'help with', 'offer', 'provide'],
-            'contact': ['contact', 'email', 'phone', 'reach', 'get in touch', 'call'],
-            'business_hours': ['hours', 'time', 'open', 'available', 'schedule', 'when'],
-            'pricing': ['price', 'cost', 'pricing', 'how much', 'expensive', 'budget'],
-            'timeline': ['timeline', 'how long', 'duration', 'time', 'delivery'],
-            'portfolio': ['portfolio', 'examples', 'work', 'projects', 'showcase'],
-            'technology': ['technology', 'tech', 'stack', 'framework', 'language'],
-            'help': ['help', 'support', 'assistance', 'problem', 'issue']
-        }
-        
-        # Find best matching intent
-        best_intent = None
-        best_score = 0
-        
-        for intent, keywords in intent_keywords.items():
-            for keyword in keywords:
-                if keyword in message_lower:
-                    # Calculate similarity score
-                    score = self.nlp_processor.get_text_similarity(processed_message, keyword)
-                    if score > best_score:
-                        best_score = score
-                        best_intent = intent
-        
-        # Use intent if good enough match
-        if best_intent and best_score > 0.1:  # Threshold for rule-based matching
-            responses = self.responses_by_intent.get(best_intent, [])
-            if responses:
-                response_text = random.choice(responses)
+                # Fallback processing
                 return {
-                    'response': response_text,
-                    'type': f'rule_based_{best_intent}',
-                    'confidence': best_score,
-                    'intent': best_intent,
+                    'processed_text': message.lower(),
                     'entities': [],
-                    'timestamp': datetime.now().isoformat()
-                }
-        
-        return None
-    
-    def _get_ai_response(self, user_message: str, session_id: str, chat_history: List) -> Dict[str, Any]:
-        """Get AI-powered response"""
-        try:
-            if self.ai_provider == 'openai':
-                return self._get_openai_response(user_message, chat_history)
-            elif self.ai_provider == 'ollama':
-                return self._get_ollama_response(user_message, chat_history)
-            elif self.ai_provider == 'huggingface':
-                return self._get_huggingface_response(user_message, chat_history)
-        except Exception as e:
-            logger.error(f"AI provider '{self.ai_provider}' error: {e}")
-        
-        return self._get_fallback_response()
-    
-    def _get_openai_response(self, user_message: str, chat_history: List) -> Dict[str, Any]:
-        """Get response from OpenAI"""
-        try:
-            import openai
-            
-            messages = [
-                {"role": "system", "content": "You are a helpful customer service assistant for a web development company. Keep responses concise and friendly."},
-                {"role": "user", "content": user_message}
-            ]
-            
-            response = openai.ChatCompletion.create(
-                model=self.config.CHATBOT_MODEL,
-                messages=messages,
-                max_tokens=self.config.CHATBOT_MAX_TOKENS,
-                temperature=self.config.CHATBOT_TEMPERATURE
-            )
-            
-            return {
-                'response': response.choices[0].message.content.strip(),
-                'type': 'ai_openai',
-                'confidence': 1.0,  # AI responses are considered confident
-                'intent': 'ai_generated',
-                'entities': [],
-                'timestamp': datetime.now().isoformat()
-            }
-        except Exception as e:
-            logger.error(f"OpenAI error: {e}")
-            return self._get_fallback_response()
-    
-    def _get_ollama_response(self, user_message: str, chat_history: List) -> Dict[str, Any]:
-        """Get response from Ollama"""
-        try:
-            import requests
-            
-            prompt = f"You are a helpful customer service assistant. User asks: {user_message}\nRespond helpfully and concisely:"
-            
-            response = requests.post(
-                f"{self.config.OLLAMA_BASE_URL}/api/generate",
-                json={
-                    "model": self.config.OLLAMA_MODEL,
-                    "prompt": prompt,
-                    "stream": False
-                },
-                timeout=30
-            )
-            
-            if response.status_code == 200:
-                result = response.json()
-                return {
-                    'response': result.get('response', '').strip(),
-                    'type': 'ai_ollama',
-                    'confidence': 1.0,  # AI responses are considered confident
-                    'intent': 'ai_generated',
-                    'entities': [],
-                    'timestamp': datetime.now().isoformat()
+                    'sentiment': {'sentiment_score': 0, 'sentiment_label': 'neutral'}
                 }
         except Exception as e:
-            logger.error(f"Ollama error: {e}")
-        
-        return self._get_fallback_response()
-    
-    def _get_huggingface_response(self, user_message: str, chat_history: List) -> Dict[str, Any]:
-        """Get response from Hugging Face model"""
-        try:
-            response = self.ai_pipeline(
-                f"User: {user_message}\nBot:",
-                max_length=100,
-                num_return_sequences=1,
-                temperature=0.7
-            )
-            
-            generated_text = response[0]['generated_text']
-            bot_response = generated_text.split("Bot:")[-1].strip()
-            
+            logger.error(f"Error in NLP processing: {e}")
             return {
-                'response': bot_response,
-                'type': 'ai_huggingface',
-                'confidence': 1.0,  # AI responses are considered confident
-                'intent': 'ai_generated',
+                'processed_text': message.lower(),
                 'entities': [],
-                'timestamp': datetime.now().isoformat()
+                'sentiment': {'sentiment_score': 0, 'sentiment_label': 'neutral'}
             }
-        except Exception as e:
-            logger.error(f"Hugging Face error: {e}")
-        
-        return self._get_fallback_response()
     
-    def _get_fallback_response(self) -> Dict[str, Any]:
-        """Ultimate fallback response"""
+    def _classify_intent(self, processed_text: str) -> Dict[str, Any]:
+        """Classify intent from processed text"""
+        try:
+            if self.intent_classifier:
+                intent, confidence = self.intent_classifier.predict(processed_text)
+                return {
+                    'intent': intent,
+                    'confidence': confidence,
+                    'above_threshold': confidence >= self.confidence_threshold
+                }
+            else:
+                return {
+                    'intent': 'unknown',
+                    'confidence': 0.0,
+                    'above_threshold': False
+                }
+        except Exception as e:
+            logger.error(f"Error in intent classification: {e}")
+            return {
+                'intent': 'unknown',
+                'confidence': 0.0,
+                'above_threshold': False
+            }
+    
+    def _generate_response(self, user_message: str, processed_data: Dict, 
+                          intent_result: Dict) -> ChatResponse:
+        """Generate response based on intent and context"""
+        try:
+            intent = intent_result['intent']
+            confidence = intent_result['confidence']
+            
+            # Try to get intent-based response
+            if intent_result['above_threshold'] and self.response_generator:
+                response_text = self.response_generator.get_response_for_intent(
+                    intent=intent,
+                    user_message=user_message,
+                    entities=processed_data.get('entities', []),
+                    sentiment=processed_data.get('sentiment', {})
+                )
+                
+                if response_text:
+                    # Process dynamic content
+                    if self.dynamic_handler:
+                        response_text = self.dynamic_handler.process_response(
+                            response_text, user_message
+                        )
+                    
+                    return ChatResponse(
+                        response=response_text,
+                        intent=intent,
+                        confidence=confidence,
+                        response_type='ml_intent',
+                        entities=processed_data.get('entities', []),
+                        sentiment=processed_data.get('sentiment', {})
+                    )
+            
+            # Fallback to similarity-based response
+            similarity_response = self._get_similarity_response(user_message, processed_data)
+            if similarity_response:
+                return similarity_response
+            
+            # Final fallback
+            return self._get_fallback_response("No matching intent found")
+            
+        except Exception as e:
+            logger.error(f"Error generating response: {e}")
+            return self._get_error_response()
+    
+    def _get_similarity_response(self, user_message: str, processed_data: Dict) -> Optional[ChatResponse]:
+        """Get response based on text similarity (fallback method)"""
+        try:
+            # This could be enhanced with vector similarity
+            # For now, return None to use fallback
+            return None
+        except Exception as e:
+            logger.error(f"Error in similarity response: {e}")
+            return None
+    
+    def _log_conversation(self, user_message: str, response: ChatResponse, session_id: str):
+        """Log conversation to analytics"""
+        try:
+            if self.conversation_logger:
+                self.conversation_logger.log_conversation(
+                    user_message=user_message,
+                    bot_response=response.response,
+                    intent=response.intent,
+                    confidence=response.confidence,
+                    response_type=response.response_type,
+                    entities=response.entities,
+                    session_id=session_id
+                )
+        except Exception as e:
+            logger.error(f"Error logging conversation: {e}")
+    
+    def _get_fallback_response(self, reason: str = "Unknown") -> ChatResponse:
+        """Get fallback response when no intent matches"""
         fallback_responses = [
-            "I'm here to help! Could you please rephrase your question or use our contact form for detailed assistance?",
-            "I'd be happy to help you with that! For specific information, please contact us through our website.",
-            "That's a great question! Please reach out through our contact form so our team can provide you with detailed assistance.",
-            "I want to make sure I give you the best answer possible. Please use our contact form to get in touch with our team."
+            "I'd be happy to help you with that! Could you please provide more specific details?",
+            "I want to make sure I give you the most helpful response. Could you tell me more?",
+            "I'm here to help! Could you please rephrase your question or provide more details?",
+            "Let me assist you better. Could you provide more information about what you need?"
         ]
         
-        return {
-            'response': random.choice(fallback_responses),
-            'type': 'fallback',
-            'confidence': 1.0,  # Fallback responses are always confident
-            'intent': 'fallback',
-            'entities': [],
-            'timestamp': datetime.now().isoformat()
-        }
+        import random
+        response_text = random.choice(fallback_responses)
+        
+        return ChatResponse(
+            response=response_text,
+            intent='fallback',
+            confidence=1.0,
+            response_type='fallback',
+            entities=[],
+            sentiment={}
+        )
     
-    def get_intent_probabilities(self, user_message: str) -> Dict[str, float]:
-        """Get probabilities for all intents (useful for debugging)"""
-        if self.ml_enabled:
-            return self.intent_classifier.get_all_intents_probabilities(user_message)
-        return {}
-    
-    def add_feedback(self, user_message: str, correct_intent: str):
-        """Add user feedback for model improvement"""
-        if self.ml_enabled:
-            self.intent_classifier.retrain_with_feedback(user_message, correct_intent)
+    def _get_error_response(self) -> ChatResponse:
+        """Get error response for system failures"""
+        return ChatResponse(
+            response="I'm experiencing some technical difficulties right now. Please try again in a moment.",
+            intent='error',
+            confidence=1.0,
+            response_type='error',
+            entities=[],
+            sentiment={},
+            success=False
+        )
     
     def get_model_info(self) -> Dict[str, Any]:
-        """Get information about the current model"""
+        """Get information about the loaded model"""
+        try:
+            info = {
+                'ml_enabled': self._available,
+                'intents_count': 0,
+                'model_loaded': False,
+                'conversation_count': 0
+            }
+            
+            # Get intents count
+            if os.path.exists(self.intents_file):
+                try:
+                    with open(self.intents_file, 'r', encoding='utf-8') as f:
+                        data = json.load(f)
+                        info['intents_count'] = len(data.get('intents', []))
+                except Exception:
+                    pass
+            
+            # Get model status
+            if self.intent_classifier:
+                info['model_loaded'] = True
+            
+            # Get conversation count
+            if self.conversation_logger:
+                analytics = self.conversation_logger.get_analytics_report()
+                info['conversation_count'] = analytics.get('total_conversations', 0)
+            
+            return info
+            
+        except Exception as e:
+            logger.error(f"Error getting model info: {e}")
+            return {'ml_enabled': False, 'intents_count': 0, 'model_loaded': False}
+    
+    def get_service_status(self) -> Dict[str, bool]:
+        """Get status of all service components"""
         return {
-            'ml_enabled': self.ml_enabled,
-            'ai_enabled': self.ai_enabled,
-            'ai_provider': self.ai_provider,
-            'model_path': self.config.CHATBOT_MODEL_PATH,
-            'confidence_threshold': self.config.CHATBOT_CONFIDENCE_THRESHOLD,
-            'intents_count': len(self.responses_by_intent),
-            'available_intents': list(self.responses_by_intent.keys())
+            'ML Chatbot Service': self._available,
+            'Intent Classifier': self.intent_classifier is not None,
+            'NLP Processor': self.nlp_processor is not None,
+            'Response Generator': self.response_generator is not None,
+            'Conversation Logger': self.conversation_logger is not None,
+            'Dynamic Handler': self.dynamic_handler is not None
         }
     
+    def get_analytics_report(self) -> Dict[str, Any]:
+        """Get comprehensive analytics report"""
+        try:
+            if self.conversation_logger:
+                report = self.conversation_logger.get_analytics_report()
+                
+                # Add summary section for easy access
+                report['summary'] = {
+                    'total_conversations': report.get('total_conversations', 0),
+                    'unique_sessions': report.get('unique_sessions', 0),
+                    'average_confidence': report.get('average_confidence', 0.0)
+                }
+                
+                return report
+            else:
+                return {'error': 'Analytics not available', 'summary': {}}
+                
+        except Exception as e:
+            logger.error(f"Error getting analytics: {e}")
+            return {'error': str(e), 'summary': {}}
+    
+    def add_user_feedback(self, user_message: str, bot_response: str, rating: int,
+                         correct_intent: str = '', notes: str = '') -> bool:
+        """Add user feedback for model improvement"""
+        try:
+            if self.conversation_logger:
+                self.conversation_logger.log_feedback(
+                    user_message=user_message,
+                    bot_response=bot_response,
+                    user_rating=rating,
+                    correct_intent=correct_intent,
+                    improvement_notes=notes
+                )
+                return True
+            return False
+        except Exception as e:
+            logger.error(f"Error adding feedback: {e}")
+            return False
+    
     def is_available(self) -> bool:
-        """Check if the chatbot service is available and ready to use"""
-        return self.ml_enabled and bool(self.responses_by_intent)
+        """Check if the service is available and functioning"""
+        return self._available and self._initialized
+    
+    def retrain_model(self) -> bool:
+        """Retrain the ML model with current data"""
+        try:
+            if self.intent_classifier and os.path.exists(self.intents_file):
+                logger.info("Retraining ML model...")
+                success = self.intent_classifier.train_model(
+                    self.intents_file,
+                    model_type='logistic_regression'
+                )
+                if success:
+                    logger.info("Model retrained successfully")
+                    return True
+                else:
+                    logger.error("Model retraining failed")
+                    return False
+            return False
+        except Exception as e:
+            logger.error(f"Error retraining model: {e}")
+            return False
+    
+    def get_intent_probabilities(self, user_message: str) -> Dict[str, float]:
+        """Get probability scores for all intents"""
+        try:
+            if self.intent_classifier:
+                processed_data = self._process_message(user_message)
+                return self.intent_classifier.get_intent_probabilities(
+                    processed_data['processed_text']
+                )
+            return {}
+        except Exception as e:
+            logger.error(f"Error getting intent probabilities: {e}")
+            return {}
+    
+    def clear_conversation_history(self, session_id: str = None):
+        """Clear conversation history for session or all sessions"""
+        try:
+            if self.conversation_logger:
+                if hasattr(self.conversation_logger, 'clear_logs'):
+                    self.conversation_logger.clear_logs(session_id)
+        except Exception as e:
+            logger.error(f"Error clearing conversation history: {e}")

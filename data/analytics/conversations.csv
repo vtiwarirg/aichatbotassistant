@@ -1,0 +1,110 @@
+timestamp,session_id,user_message,bot_response,intent,confidence,response_type,entities
+2025-10-17T01:30:12.837136,web_session,hello,"Hi there! Thanks for reaching out. I can help with various business needs including technical support, HR policies, and customer service. What do you need help with?",greeting,1.0,similarity_based,[]
+2025-10-17T01:30:16.623123,web_session,help,"I'm equipped to help with various business needs including customer support, employee assistance, technical troubleshooting, account management, and policy questions. What would you like to know about?",services,1.0,similarity_based,[]
+2025-10-17T01:30:22.148877,web_session,services,"We take complaints seriously: Multiple reporting channels available, dedicated resolution team, management escalation process, and commitment to resolving issues promptly.",complaints,0.5459237543348087,similarity_based,[]
+2025-10-17T01:30:30.018281,web_session,contact,"Multiple ways to reach us: Online chat (available now), Email support, Phone support (Mon-Fri 8AM-8PM), and our mobile app support feature.",contact,1.0,similarity_based,[]
+2025-10-17T01:31:30.664901,web_session,current time?,"Thank you for using our AI assistant! If you need further help with customer support, HR, or IT issues, feel free to reach out anytime.",goodbye,1.0,similarity_based,[]
+2025-10-17T01:34:27.921370,web_session,time,"Take care! I'm always here to help with customer service, technical support, or HR questions.",goodbye,1.0,similarity_based,[]
+2025-10-17T01:42:21.039455,web_session,What time is it?,01:42 AM,time,0.6565455873989096,ml_classification,[]
+2025-10-17T01:42:21.069937,web_session,Current time please,Current time: 01:42 AM,time,0.4578154458868299,ml_classification,[]
+2025-10-17T01:42:21.105949,web_session,Tell me the time,{{DYNAMIC_TIME}},time,1.0,similarity_based,[]
+2025-10-17T01:42:21.120869,web_session,What's today's date?,"Today is October 17, 2025",date,0.43909791147059807,ml_classification,"[[""today"", ""DATE""]]"
+2025-10-17T01:42:21.153186,web_session,Current date,Today is {{DYNAMIC_DATE}},date,1.0,similarity_based,[]
+2025-10-17T01:44:29.691050,web_session,What time is it?,Current time: 01:44 AM,time,0.6565455873989096,ml_classification,[]
+2025-10-17T01:44:44.650767,web_session,What time is it?,Right now it's 01:44 AM,time,0.6565455873989096,ml_classification,[]
+2025-10-17T01:44:44.697772,web_session,Current time please,Current time: 01:44 AM,time,0.4578154458868299,ml_classification,[]
+2025-10-17T01:44:44.744039,web_session,Tell me the time,01:44 AM,time,1.0,similarity_based,[]
+2025-10-17T01:44:44.790080,web_session,What's today's date?,"Today is October 17, 2025",date,0.43909791147059807,ml_classification,"[[""today"", ""DATE""]]"
+2025-10-17T01:44:44.842404,web_session,Current date,"The current date is October 17, 2025",date,1.0,similarity_based,[]
+2025-10-17T01:45:38.434572,web_session,contact,"For immediate assistance: Live Chat (24/7), Email: help@company.com, Phone: 1-800-123-HELP. HR inquiries can be directed to hr@company.com.",contact,1.0,similarity_based,[]
+2025-10-17T01:45:48.511407,web_session,time,Right now it's 01:45 AM,time,0.6565455873989096,ml_classification,[]
+2025-10-17T01:48:15.525626,web_session,weather?,I'd be happy to help you with that! Could you please provide more specific details about what you're looking for?,fallback,0.3,fallback,[]
+2025-10-17T01:52:01.098884,web_session,What's the weather like?,"While I can't provide real-time weather data, you can get current conditions and forecasts from weather apps or websites like weather.gov or weather.com.",weather,0.5673940896276572,similarity_based,[]
+2025-10-17T01:52:01.136441,web_session,How's the weather today?,"While I can't provide real-time weather data, you can get current conditions and forecasts from weather apps or websites like weather.gov or weather.com.",weather,1.0,similarity_based,"[[""today"", ""DATE""]]"
+2025-10-17T01:52:01.981553,web_session,Is it raining?,I'd be happy to help you with that! Could you please provide more specific details about what you're looking for?,fallback,0.3,fallback,[]
+2025-10-17T01:52:02.001220,web_session,What's the temperature?,"For current weather conditions, please check your local weather service or a reliable weather app on your device.",weather,0.6267058690857207,similarity_based,[]
+2025-10-17T01:52:02.039838,web_session,Weather forecast please,"For current weather conditions, please check your local weather service or a reliable weather app on your device.",weather,1.0,similarity_based,[]
+2025-10-17T01:52:21.522483,web_session,What time is it?,Right now it's 01:52 AM,time,0.6565455873989096,ml_classification,[]
+2025-10-17T01:52:21.557092,web_session,What's today's date?,"Today's date is October 17, 2025",date,0.43909791147059807,ml_classification,"[[""today"", ""DATE""]]"
+2025-10-17T01:52:21.591365,web_session,How's the weather?,"For current weather conditions, please check your local weather service or a reliable weather app on your device.",weather,1.0,similarity_based,[]
+2025-10-17T01:52:21.606957,web_session,Hello there!,"Hi! I'm here to assist with your business needs. Whether it's technical support, HR questions, or general inquiries, I'm ready to help!",greeting,1.0,similarity_based,[]
+2025-10-17T01:52:21.639209,web_session,I need help with billing,"I'm here to help! I can assist with: Customer Service questions, IT/Technical support, HR policies & benefits, Account management, Billing inquiries, Product support, and General business information. What do you need help with?",help,0.8846510323571941,similarity_based,[]
+2025-10-17T01:53:17.742394,web_session,weather?,"I'd suggest checking your preferred weather app or website like weather.com, accuweather.com, or your local meteorological service for the most accurate weather information.",weather,1.0,similarity_based,[]
+2025-10-17T02:37:38.427526,test_session,Hello there!,Hi there! I'm here to assist you with various business needs.,greeting,0.8,rule_based
+2025-10-17T02:37:38.431256,test_session,What time is it?,{{DYNAMIC_TIME}},time,0.5267124359031601,ml_prediction
+2025-10-17T02:37:38.434690,test_session,What's today's date?,The current date is {{DYNAMIC_DATE}},date,0.30435408844378237,ml_prediction
+2025-10-17T02:37:38.438444,test_session,What services do you offer?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:37:38.442838,test_session,How's the weather?,"I'd suggest checking your preferred weather app or website like weather.com, accuweather.com, or your local meteorological service for the most accurate weather information.",weather,0.6038049072957343,ml_prediction
+2025-10-17T02:37:38.448204,test_session,Thank you!,Thank you for using our AI assistant! Feel free to reach out anytime.,goodbye,0.8,rule_based
+2025-10-17T02:38:02.311751,web_session,time,Current time: {{DYNAMIC_TIME}},time,0.5267124359031601,ml_prediction
+2025-10-17T02:41:01.566974,test_session,Hello there!,Hi there! I'm here to assist you with various business needs.,greeting,0.8,rule_based
+2025-10-17T02:41:01.573562,test_session,What time is it?,Current time: {{DYNAMIC_TIME}},time,0.5267124359031601,ml_prediction
+2025-10-17T02:41:01.580473,test_session,What's today's date?,The current date is {{DYNAMIC_DATE}},date,0.30435408844378237,ml_prediction
+2025-10-17T02:41:01.585195,test_session,What services do you offer?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:41:01.592074,test_session,How's the weather today?,"For current weather conditions, please check your local weather service or a reliable weather app on your device.",weather,0.4025770715775255,ml_prediction
+2025-10-17T02:41:01.596718,test_session,I need help with billing,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:41:01.601103,test_session,What are your business hours?,I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:41:01.608094,test_session,I have a technical issue,I'd be happy to help you with that! Could you please provide more specific details?,fallback,0.5,rule_based
+2025-10-17T02:41:01.612090,test_session,What's your pricing?,I'd be happy to help you with that! Could you please provide more specific details?,fallback,0.5,rule_based
+2025-10-17T02:41:01.616336,test_session,Thank you for your help!,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:42:44.001392,web_session,time,The current time is {{DYNAMIC_TIME}},time,0.5267124359031601,ml_prediction
+2025-10-17T02:46:17.476821,test_session,Hello there!,Hello! Welcome to our AI assistant. How can I help you today?,greeting,0.8,rule_based
+2025-10-17T02:46:17.483232,test_session,Good morning!,Hi there! I'm here to assist you with various business needs.,greeting,0.8,rule_based
+2025-10-17T02:46:17.490991,test_session,Hey!,Hi there! I'm here to assist you with various business needs.,greeting,0.8,rule_based
+2025-10-17T02:46:17.498881,test_session,What time is it?,Current time: 02:46 AM,time,0.5267124359031601,ml_prediction
+2025-10-17T02:46:17.504986,test_session,Current time please,02:46 AM,time,0.33445182728658823,ml_prediction
+2025-10-17T02:46:17.510079,test_session,What's today's date?,"The current date is October 17, 2025",date,0.30435408844378237,ml_prediction
+2025-10-17T02:46:17.513366,test_session,Tell me the date,"Today's date is October 17, 2025",date,0.9,rule_based
+2025-10-17T02:46:17.521063,test_session,What services do you offer?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:46:17.529886,test_session,What can you help with?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:46:17.537797,test_session,Help me,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:46:17.546136,test_session,What are your hours?,I want to make sure I give you the most helpful response. Could you tell me more?,fallback,0.5,rule_based
+2025-10-17T02:46:17.553844,test_session,When are you open?,I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.560558,test_session,Contact information,I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.567612,test_session,I have a technical issue,I want to make sure I give you the most helpful response. Could you tell me more?,fallback,0.5,rule_based
+2025-10-17T02:46:17.575765,test_session,Billing question,I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.579387,test_session,Account problem,I want to make sure I give you the most helpful response. Could you tell me more?,fallback,0.5,rule_based
+2025-10-17T02:46:17.582924,test_session,How's the weather?,"While I can't provide real-time weather data, you can get current conditions and forecasts from weather apps or websites like weather.gov or weather.com.",weather,0.6038049072957343,ml_prediction
+2025-10-17T02:46:17.586946,test_session,Is it raining?,"I don't have access to current weather data, but I recommend checking your local weather app or visiting weather.com for accurate, up-to-date weather information.",weather,0.8,rule_based
+2025-10-17T02:46:17.591341,test_session,Thank you,Thanks for chatting! Have a great day!,goodbye,0.8,rule_based
+2025-10-17T02:46:17.594881,test_session,Bye!,Goodbye! I'm here whenever you need assistance.,goodbye,0.8,rule_based
+2025-10-17T02:46:17.598646,test_session,What time is it?,The current time is 02:46 AM,time,0.5267124359031601,ml_prediction
+2025-10-17T02:46:17.601741,test_session,What's today's date?,"Today's date is October 17, 2025",date,0.30435408844378237,ml_prediction
+2025-10-17T02:46:17.605943,test_session,Hello,Welcome! I'm ready to help with your questions.,greeting,0.8,rule_based
+2025-10-17T02:46:17.609527,test_session,What time is it?,Current time: 02:46 AM,time,0.5267124359031601,ml_prediction
+2025-10-17T02:46:17.612504,test_session,Weather today?,"I'd suggest checking your preferred weather app or website like weather.com, accuweather.com, or your local meteorological service for the most accurate weather information.",weather,0.4025770715775255,ml_prediction
+2025-10-17T02:46:17.615273,test_session,Help me,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:46:17.618356,test_session,Random nonsense query,I want to make sure I give you the most helpful response. Could you tell me more?,fallback,0.5,rule_based
+2025-10-17T02:46:17.622317,test_session,Technical support needed,I want to make sure I give you the most helpful response. Could you tell me more?,fallback,0.5,rule_based
+2025-10-17T02:46:17.626274,test_session,Hello there!,Hi there! I'm here to assist you with various business needs.,greeting,0.8,rule_based
+2025-10-17T02:46:17.629201,test_session,Good morning!,Hi there! I'm here to assist you with various business needs.,greeting,0.8,rule_based
+2025-10-17T02:46:17.632297,test_session,Hey!,Hello! Welcome to our AI assistant. How can I help you today?,greeting,0.8,rule_based
+2025-10-17T02:46:17.635492,test_session,What time is it?,02:46 AM,time,0.5267124359031601,ml_prediction
+2025-10-17T02:46:17.639656,test_session,Current time please,The current time is 02:46 AM,time,0.33445182728658823,ml_prediction
+2025-10-17T02:46:17.644119,test_session,What's today's date?,"Today is October 17, 2025",date,0.30435408844378237,ml_prediction
+2025-10-17T02:46:17.647000,test_session,Tell me the date,"Today's date is October 17, 2025",date,0.9,rule_based
+2025-10-17T02:46:17.650036,test_session,What services do you offer?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:46:17.653794,test_session,What can you help with?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:46:17.658011,test_session,Help me,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:46:17.703476,perf_test_0,Quick test,I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.711593,perf_test_1,Quick test,I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.716564,perf_test_2,Quick test,I'd be happy to help you with that! Could you please provide more specific details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.721157,perf_test_3,Quick test,I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.725117,perf_test_4,Quick test,I'd be happy to help you with that! Could you please provide more specific details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.726214,error_test,,I want to make sure I give you the most helpful response. Could you tell me more?,fallback,0.5,rule_based
+2025-10-17T02:46:17.726528,error_test,  ,I want to make sure I give you the most helpful response. Could you tell me more?,fallback,0.5,rule_based
+2025-10-17T02:46:17.730748,error_test,!@#$%^&*(),I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:46:17.733922,error_test,aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,I want to make sure I give you the most helpful response. Could you tell me more?,fallback,0.5,rule_based
+2025-10-17T02:46:17.738227,error_test,Ω∑®†¥,I'm here to help! Could you please rephrase your question or provide more details?,fallback,0.5,rule_based
+2025-10-17T02:48:44.354002,web_session,time,Current time: 02:48 AM,time,0.5267124359031601,ml_prediction
+2025-10-17T02:49:12.035951,web_session,Hello there!,Hi there! I'm here to assist you with various business needs.,greeting,0.8,rule_based
+2025-10-17T02:49:23.036541,web_session,What time is it?,The current time is 02:49 AM,time,0.5267124359031601,ml_prediction
+2025-10-17T02:49:35.262328,web_session,What's today's date?,"October 17, 2025",date,0.30435408844378237,ml_prediction
+2025-10-17T02:49:47.435872,web_session,What services do you offer?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:49:58.954474,web_session,Thank you!,Thank you for using our AI assistant! Feel free to reach out anytime.,goodbye,0.8,rule_based
+2025-10-17T02:59:59.373146,test_session,Hello there!,Welcome! I'm ready to help with your questions.,greeting,0.8,rule_based
+2025-10-17T02:59:59.376770,test_session,What time is it?,Current time: 02:59 AM,time,0.5267124359031601,ml_prediction
+2025-10-17T02:59:59.380660,test_session,What's today's date?,"Today's date is October 17, 2025",date,0.30435408844378237,ml_prediction
+2025-10-17T02:59:59.385177,test_session,What services do you offer?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T02:59:59.390104,test_session,How's the weather?,"I don't have access to current weather data, but I recommend checking your local weather app or visiting weather.com for accurate, up-to-date weather information.",weather,0.6038049072957343,ml_prediction
+2025-10-17T02:59:59.394162,test_session,Thank you!,Goodbye! I'm here whenever you need assistance.,goodbye,0.8,rule_based

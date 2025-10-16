@@ -398,6 +398,81 @@
         "Comprehensive support available: Customer service, Technical support, Human resources, Billing assistance, Product guidance, Security questions, and Emergency support. What area interests you?",
         "I'm your virtual assistant for all business needs: Customer support, IT helpdesk, HR assistance, Account management, Product help, and General inquiries. What can I help you with right now?"
       ]
+    },
+    {
+      "tag": "time",
+      "patterns": [
+        "What time is it",
+        "Current time",
+        "Tell me the time",
+        "What's the time",
+        "Time now",
+        "Show me the time",
+        "What time",
+        "Time please",
+        "Current time please",
+        "What's the current time",
+        "Can you tell me the time",
+        "Display time",
+        "Get time",
+        "Time and date",
+        "What's today's date and time"
+      ],
+      "responses": [
+        "{{DYNAMIC_TIME}}",
+        "The current time is {{DYNAMIC_TIME}}",
+        "Right now it's {{DYNAMIC_TIME}}",
+        "Current time: {{DYNAMIC_TIME}}"
+      ]
+    },
+
+    {
+      "tag": "date",
+      "patterns": [
+        "What date is it",
+        "Current date",
+        "Tell me the date",
+        "What's the date",
+        "Date today",
+        "Show me the date",
+        "What's today",
+        "Today's date",
+        "Current date please",
+        "What's today's date"
+      ],
+      "responses": [
+        "{{DYNAMIC_DATE}}",
+        "Today's date is {{DYNAMIC_DATE}}",
+        "The current date is {{DYNAMIC_DATE}}",
+        "Today is {{DYNAMIC_DATE}}"
+      ]
+    },
+
+    {
+      "tag": "weather",
+      "patterns": [
+        "What's the weather",
+        "Weather",
+        "Weather today",
+        "How's the weather",
+        "Weather forecast",
+        "Is it raining",
+        "Weather report",
+        "What's it like outside",
+        "Temperature today",
+        "Weather conditions",
+        "Current weather",
+        "Weather now",
+        "Check weather",
+        "Weather update",
+        "Climate today"
+      ],
+      "responses": [
+        "I don't have access to current weather data, but I recommend checking your local weather app or visiting weather.com for accurate, up-to-date weather information.",
+        "For current weather conditions, please check your local weather service or a reliable weather app on your device.",
+        "I'd suggest checking your preferred weather app or website like weather.com, accuweather.com, or your local meteorological service for the most accurate weather information.",
+        "While I can't provide real-time weather data, you can get current conditions and forecasts from weather apps or websites like weather.gov or weather.com."
+      ]
     }
   ]
 }
