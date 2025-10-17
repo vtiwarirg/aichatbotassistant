@@ -1,7 +1,3 @@
-"""
-Complete ChatbotFacade implementation using ML tools
-Uses NLTK, spaCy, scikit-learn for intelligent responses
-"""
 import logging
 import json
 import os
@@ -22,7 +18,6 @@ import numpy as np
 logger = logging.getLogger(__name__)
 
 class ChatbotFacade:
-    """Complete ML-powered chatbot facade"""
     
     def __init__(self):
         self._available = False
@@ -36,7 +31,6 @@ class ChatbotFacade:
         self._init_service()
     
     def _init_service(self):
-        """Initialize complete ML chatbot service"""
         try:
             logger.info("Initializing Complete ML ChatbotFacade...")
             
@@ -65,7 +59,6 @@ class ChatbotFacade:
             self._initialized = False
     
     def _download_nltk_data(self):
-        """Download required NLTK data"""
         try:
             nltk.data.find('tokenizers/punkt')
         except LookupError:
@@ -82,7 +75,6 @@ class ChatbotFacade:
             nltk.download('averaged_perceptron_tagger', quiet=True)
     
     def _load_spacy_model(self):
-        """Load spaCy model with fallback"""
         try:
             self.nlp = spacy.load("en_core_web_sm")
             logger.info("spaCy model loaded successfully")
@@ -91,18 +83,15 @@ class ChatbotFacade:
             self.nlp = None
     
     def _load_intents_data(self):
-        """Load intents data from JSON file"""
         if os.path.exists(self.intents_file):
             with open(self.intents_file, 'r', encoding='utf-8') as f:
                 self.intents_data = json.load(f)
             logger.info(f"Loaded {len(self.intents_data.get('intents', []))} intents")
         else:
             logger.warning(f"Intents file not found: {self.intents_file}")
-            # Create basic intents data
             self._create_basic_intents()
     
     def _create_basic_intents(self):
-        """Create basic intents if file doesn't exist"""
         self.intents_data = {
             "intents": [
                 {
@@ -124,7 +113,6 @@ class ChatbotFacade:
         }
     
     def _init_ml_model(self):
-        """Initialize or load ML model"""
         os.makedirs('models', exist_ok=True)
         
         if os.path.exists(self.model_file):
@@ -133,7 +121,6 @@ class ChatbotFacade:
             self._train_model()
     
     def _load_model(self):
-        """Load pre-trained model"""
         try:
             with open(self.model_file, 'rb') as f:
                 self.ml_model = pickle.load(f)
@@ -143,7 +130,6 @@ class ChatbotFacade:
             self._train_model()
     
     def _train_model(self):
-        """Train ML model using scikit-learn"""
         try:
             logger.info("Training ML model...")
             
@@ -163,22 +149,12 @@ class ChatbotFacade:
             
             # Create ML pipeline
             self.ml_model = Pipeline([
-                ('tfidf', TfidfVectorizer(
-                    max_features=1000,
-                    stop_words='english',
-                    ngram_range=(1, 2),
-                    lowercase=True
-                )),
-                ('classifier', LogisticRegression(
-                    random_state=42,
-                    max_iter=1000
-                ))
+                ('tfidf', TfidfVectorizer(max_features=1000,stop_words='english',ngram_range=(1, 2),lowercase=True)),
+                ('classifier', LogisticRegression(random_state=42, max_iter=1000))
             ])
             
             # Split data
-            X_train, X_test, y_train, y_test = train_test_split(
-                patterns, labels, test_size=0.2, random_state=42
-            )
+            X_train, X_test, y_train, y_test = train_test_split(patterns, labels, test_size=0.2, random_state=42)
             
             # Train model
             self.ml_model.fit(X_train, y_train)
@@ -200,7 +176,6 @@ class ChatbotFacade:
             self.ml_model = None
     
     def _preprocess_text(self, text: str) -> str:
-        """Preprocess text using NLTK and spaCy"""
         try:
             # Basic preprocessing
             text = text.lower().strip()
@@ -227,17 +202,14 @@ class ChatbotFacade:
             return text.lower()
     
     def _setup_csv_logging(self):
-        """Setup CSV logging for conversations"""
         os.makedirs('data/analytics', exist_ok=True)
         
         if not os.path.exists(self.conversations_file):
             with open(self.conversations_file, 'w', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)
-                writer.writerow(['timestamp', 'session_id', 'user_message', 'bot_response', 
-                               'intent', 'confidence', 'response_type'])
+                writer.writerow(['timestamp', 'session_id', 'user_message', 'bot_response','intent', 'confidence', 'response_type'])
     
     def _log_conversation(self, user_message: str, response_data: Dict, session_id: str):
-        """Log conversation to CSV"""
         try:
             with open(self.conversations_file, 'a', newline='', encoding='utf-8') as f:
                 writer = csv.writer(f)

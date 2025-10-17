@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-AI Chatbot Assistant - Main Entry Point
-Run with: python run.py
-"""
 import os
 import sys
 import logging
@@ -27,12 +23,7 @@ def main():
     logger.info(f"Debug mode: {debug}")
     
     try:
-        app.run(
-            host=host,
-            port=port,
-            debug=debug,
-            threaded=True
-        )
+        app.run(host=host,port=port,debug=debug,threaded=True)
     except KeyboardInterrupt:
         logger.info("Application stopped by user")
     except Exception as e:

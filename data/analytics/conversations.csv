@@ -108,3 +108,4 @@ timestamp,session_id,user_message,bot_response,intent,confidence,response_type,e
 2025-10-17T02:59:59.385177,test_session,What services do you offer?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
 2025-10-17T02:59:59.390104,test_session,How's the weather?,"I don't have access to current weather data, but I recommend checking your local weather app or visiting weather.com for accurate, up-to-date weather information.",weather,0.6038049072957343,ml_prediction
 2025-10-17T02:59:59.394162,test_session,Thank you!,Goodbye! I'm here whenever you need assistance.,goodbye,0.8,rule_based
+2025-10-17T03:45:48.103824,web_session,Hi,Hello! Welcome to our AI assistant. How can I help you today?,greeting,0.8,rule_based

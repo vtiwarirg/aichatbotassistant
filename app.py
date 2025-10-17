@@ -1,7 +1,3 @@
-"""
-Refactored Flask application with modular architecture
-Main application factory and configuration
-"""
 from flask import Flask, render_template
 import logging
 import os
@@ -16,15 +12,11 @@ load_dotenv()
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler('logs/app.log'),
-        logging.StreamHandler()
-    ]
+    handlers=[logging.FileHandler('logs/app.log'),logging.StreamHandler()]
 )
 logger = logging.getLogger(__name__)
 
 def create_app():
-    """Create and configure Flask application with modular structure"""
     logger.info("Creating AI Chatbot application with refactored architecture")
     
     app = Flask(__name__)
@@ -90,9 +82,7 @@ def create_app():
     # CLI commands for development and maintenance
     @app.cli.command()
     def train_chatbot():
-        """Train the ML chatbot model"""
         from services.chatbot_facade import ChatbotFacade
-        print("🤖 Training chatbot model...")
         try:
             chatbot = ChatbotFacade()
             if chatbot.is_available():
@@ -114,10 +104,8 @@ def create_app():
     
     @app.cli.command()
     def status():
-        """Check comprehensive application status"""
         from services.chatbot_facade import ChatbotFacade
         try:
-            print("🔍 Checking application status...")
             chatbot = ChatbotFacade()
             
             # Service status
@@ -164,7 +152,6 @@ def create_app():
     
     @app.cli.command()
     def export_data():
-        """Export training data"""
         from services.chatbot_facade import ChatbotFacade
         try:
             print("📤 Exporting training data...")

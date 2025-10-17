@@ -1391,3 +1391,98 @@
 2025-10-17 03:02:25,258 - INFO - Debug mode: True
 2025-10-17 03:02:25,287 - WARNING -  * Debugger is active!
 2025-10-17 03:02:25,289 - INFO -  * Debugger PIN: 307-926-345
+2025-10-17 03:41:26,644 - INFO - Creating AI Chatbot application with refactored architecture
+2025-10-17 03:41:26,651 - INFO - All route blueprints registered successfully
+2025-10-17 03:41:26,651 - INFO - AI Chatbot application created successfully with modular architecture
+2025-10-17 03:41:26,651 - INFO - Available routes: /, /chat, /about, /contact, /api/*, /health
+2025-10-17 03:41:28,648 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:41:28,920 - INFO - spaCy model loaded successfully
+2025-10-17 03:41:28,920 - INFO - Loaded 20 intents
+2025-10-17 03:41:28,953 - INFO - ML model loaded successfully
+2025-10-17 03:41:28,954 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:44:47,518 - INFO - Creating AI Chatbot application with refactored architecture
+2025-10-17 03:44:47,522 - INFO - All route blueprints registered successfully
+2025-10-17 03:44:47,522 - INFO - AI Chatbot application created successfully with modular architecture
+2025-10-17 03:44:47,523 - INFO - Available routes: /, /chat, /about, /contact, /api/*, /health
+2025-10-17 03:44:49,404 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:44:49,668 - INFO - spaCy model loaded successfully
+2025-10-17 03:44:49,669 - INFO - Loaded 20 intents
+2025-10-17 03:44:49,669 - INFO - ML model loaded successfully
+2025-10-17 03:44:49,670 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:44:50,281 - INFO - Creating AI Chatbot application with refactored architecture
+2025-10-17 03:44:50,285 - INFO - All route blueprints registered successfully
+2025-10-17 03:44:50,286 - INFO - AI Chatbot application created successfully with modular architecture
+2025-10-17 03:44:50,286 - INFO - Available routes: /, /chat, /about, /contact, /api/*, /health
+2025-10-17 03:44:51,933 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:44:52,241 - INFO - spaCy model loaded successfully
+2025-10-17 03:44:52,241 - INFO - Loaded 20 intents
+2025-10-17 03:44:52,242 - INFO - ML model loaded successfully
+2025-10-17 03:44:52,242 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:45:09,962 - INFO - Creating AI Chatbot application with refactored architecture
+2025-10-17 03:45:09,965 - INFO - All route blueprints registered successfully
+2025-10-17 03:45:09,966 - INFO - AI Chatbot application created successfully with modular architecture
+2025-10-17 03:45:09,966 - INFO - Available routes: /, /chat, /about, /contact, /api/*, /health
+2025-10-17 03:45:11,669 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:45:11,943 - INFO - spaCy model loaded successfully
+2025-10-17 03:45:11,944 - INFO - Loaded 20 intents
+2025-10-17 03:45:11,944 - INFO - ML model loaded successfully
+2025-10-17 03:45:11,944 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:45:21,700 - INFO - Creating AI Chatbot application with refactored architecture
+2025-10-17 03:45:21,703 - INFO - All route blueprints registered successfully
+2025-10-17 03:45:21,703 - INFO - AI Chatbot application created successfully with modular architecture
+2025-10-17 03:45:21,703 - INFO - Available routes: /, /chat, /about, /contact, /api/*, /health
+2025-10-17 03:45:23,487 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:45:23,820 - INFO - spaCy model loaded successfully
+2025-10-17 03:45:23,821 - INFO - Loaded 20 intents
+2025-10-17 03:45:23,822 - INFO - ML model loaded successfully
+2025-10-17 03:45:23,822 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:45:29,834 - INFO - Creating AI Chatbot application with refactored architecture
+2025-10-17 03:45:29,838 - INFO - All route blueprints registered successfully
+2025-10-17 03:45:29,839 - INFO - AI Chatbot application created successfully with modular architecture
+2025-10-17 03:45:29,839 - INFO - Available routes: /, /chat, /about, /contact, /api/*, /health
+2025-10-17 03:45:29,839 - INFO - Starting AI Chatbot on 127.0.0.1:5000
+2025-10-17 03:45:29,840 - INFO - Environment: development
+2025-10-17 03:45:29,840 - INFO - Debug mode: True
+2025-10-17 03:45:29,877 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-10-17 03:45:29,878 - INFO - [33mPress CTRL+C to quit[0m
+2025-10-17 03:45:29,879 - INFO -  * Restarting with stat
+2025-10-17 03:45:30,084 - INFO - Creating AI Chatbot application with refactored architecture
+2025-10-17 03:45:30,088 - INFO - All route blueprints registered successfully
+2025-10-17 03:45:30,088 - INFO - AI Chatbot application created successfully with modular architecture
+2025-10-17 03:45:30,089 - INFO - Available routes: /, /chat, /about, /contact, /api/*, /health
+2025-10-17 03:45:30,089 - INFO - Starting AI Chatbot on 127.0.0.1:5000
+2025-10-17 03:45:30,089 - INFO - Environment: development
+2025-10-17 03:45:30,089 - INFO - Debug mode: True
+2025-10-17 03:45:30,117 - WARNING -  * Debugger is active!
+2025-10-17 03:45:30,119 - INFO -  * Debugger PIN: 307-926-345
+2025-10-17 03:45:35,716 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:45:35,982 - INFO - spaCy model loaded successfully
+2025-10-17 03:45:35,982 - INFO - Loaded 20 intents
+2025-10-17 03:45:35,983 - INFO - ML model loaded successfully
+2025-10-17 03:45:35,983 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:45:35,986 - INFO - 127.0.0.1 - - [17/Oct/2025 03:45:35] "GET / HTTP/1.1" 200 -
+2025-10-17 03:45:36,212 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:45:36,447 - INFO - spaCy model loaded successfully
+2025-10-17 03:45:36,448 - INFO - Loaded 20 intents
+2025-10-17 03:45:36,449 - INFO - ML model loaded successfully
+2025-10-17 03:45:36,449 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:45:36,451 - INFO - 127.0.0.1 - - [17/Oct/2025 03:45:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-10-17 03:45:40,503 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:45:40,812 - INFO - spaCy model loaded successfully
+2025-10-17 03:45:40,812 - INFO - Loaded 20 intents
+2025-10-17 03:45:40,813 - INFO - ML model loaded successfully
+2025-10-17 03:45:40,814 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:45:40,816 - INFO - 127.0.0.1 - - [17/Oct/2025 03:45:40] "GET / HTTP/1.1" 200 -
+2025-10-17 03:45:42,590 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:45:43,053 - INFO - spaCy model loaded successfully
+2025-10-17 03:45:43,055 - INFO - Loaded 20 intents
+2025-10-17 03:45:43,055 - INFO - ML model loaded successfully
+2025-10-17 03:45:43,056 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:45:43,060 - INFO - 127.0.0.1 - - [17/Oct/2025 03:45:43] "GET /chat HTTP/1.1" 200 -
+2025-10-17 03:45:47,731 - INFO - Initializing Complete ML ChatbotFacade...
+2025-10-17 03:45:48,098 - INFO - spaCy model loaded successfully
+2025-10-17 03:45:48,098 - INFO - Loaded 20 intents
+2025-10-17 03:45:48,099 - INFO - ML model loaded successfully
+2025-10-17 03:45:48,099 - INFO - ChatbotFacade initialized successfully with ML capabilities
+2025-10-17 03:45:48,105 - INFO - 127.0.0.1 - - [17/Oct/2025 03:45:48] "POST /api/chat HTTP/1.1" 200 -
