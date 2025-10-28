@@ -1,0 +1,69 @@
+flask --app index run
+
+https://flask.palletsprojects.com/en/stable/quickstart/#a-minimal-application
+
+High: https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif
+
+Low: https://media.giphy.com/media/jD4DwBtqPXRXa/giphy.gif
+
+Correct: https://media.giphy.com/media/4T7e4DmcrP9du/giphy.gif
+
+
+document.body.contentEditable = true
+
+Michael Feinberg
+
+Jonathan Neubauer
+
+Rajkumar Shivapooshanam
+
+https://genderize.io/documentation
+
+https://gist.github.com/TheMuellenator/d129237aa5fb2f1b16d6003e0f24c1f1
+https://gist.github.com/TheMuellenator/626eb26f39be3603e3d0fe4f969efd47
+https://gist.github.com/TheMuellenator/3a621f81bc80d241d0ec020a60f8382d
+https://jinja.palletsprojects.com/en/3.0.x/templates/#variables
+https://jinja.palletsprojects.com/en/3.0.x/templates/#for
+
+gmail app pass: nmty puqm fwwp hhcy
+
+
+# INSTALLATION GUIDE (Step-by-Step)
+
+# 1. Create and activate virtual environment
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1  # Windows PowerShell
+# source .venv/bin/activate    # Linux/Mac
+
+# 2. Upgrade pip first
+python -m pip install --upgrade pip
+
+# 3. Install core dependencies (minimal)
+pip install -r requirements-minimal.txt
+
+# 4. Install ML dependencies (if needed)
+pip install -r requirements-ml.txt
+
+# 5. Download spaCy model (if using ML features)
+python -m spacy download en_core_web_sm
+
+# 6. Train the model (if using ML)
+flask train-chatbot
+
+# 7. Test the chatbot
+flask test-chatbot
+
+# 8. Run the application
+python run.py
+
+# PRODUCTION DEPLOYMENT
+export FLASK_ENV=production
+export SECRET_KEY=your-secret-key
+gunicorn -w 4 -b 0.0.0.0:5000 app:app
+
+# TROUBLESHOOTING
+# If packages fail to install:
+# 1. Try installing one by one: pip install flask python-dotenv
+# 2. Use --no-cache-dir: pip install --no-cache-dir -r requirements.txt
+# 3. Try specific versions: pip install Flask==2.3.3
+# 4. Check Python version compatibility: python --version

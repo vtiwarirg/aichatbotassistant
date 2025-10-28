@@ -10669,9 +10669,9 @@ footer {
 
 header.masthead {
   position: relative;
-  margin-bottom: 3rem;
-  padding-top: calc(8rem + 57px);
-  padding-bottom: 8rem;
+  margin-bottom: 1.5rem;
+  padding-top: calc(4rem + 57px);
+  padding-bottom: 4rem;
   background: no-repeat center center;
   background-color: #6c757d;
   background-size: cover;
@@ -10699,11 +10699,11 @@ header.masthead .site-heading {
 header.masthead .page-heading h1, header.masthead .page-heading .h1,
 header.masthead .site-heading h1,
 header.masthead .site-heading .h1 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 300;
   line-height: 1.1;
   display: block;
@@ -10711,7 +10711,7 @@ header.masthead .site-heading .subheading {
   font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 header.masthead .post-heading h1, header.masthead .post-heading .h1 {
-  font-size: 2.25rem;
+  font-size: 1.75rem;
 }
 header.masthead .post-heading .meta,
 header.masthead .post-heading .subheading {
@@ -10735,16 +10735,16 @@ header.masthead .post-heading .meta a {
 }
 @media (min-width: 992px) {
   header.masthead {
-    padding-top: 12.5rem;
-    padding-bottom: 12.5rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
   }
   header.masthead .page-heading h1, header.masthead .page-heading .h1,
   header.masthead .site-heading h1,
   header.masthead .site-heading .h1 {
-    font-size: 5rem;
+    font-size: 3rem;
   }
   header.masthead .post-heading h1, header.masthead .post-heading .h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
   header.masthead .post-heading .subheading {
     font-size: 1.875rem;
