@@ -109,3 +109,12 @@ timestamp,session_id,user_message,bot_response,intent,confidence,response_type,e
 2025-10-17T02:59:59.390104,test_session,How's the weather?,"I don't have access to current weather data, but I recommend checking your local weather app or visiting weather.com for accurate, up-to-date weather information.",weather,0.6038049072957343,ml_prediction
 2025-10-17T02:59:59.394162,test_session,Thank you!,Goodbye! I'm here whenever you need assistance.,goodbye,0.8,rule_based
 2025-10-17T03:45:48.103824,web_session,Hi,Hello! Welcome to our AI assistant. How can I help you today?,greeting,0.8,rule_based
+2025-10-17T14:11:46.376550,web_session,Hi,Welcome! I'm ready to help with your questions.,greeting,0.8,rule_based
+2025-10-17T14:12:44.275400,web_session,What services do you offer,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T16:11:48.098405,test_session,Hello there!,Hello! Welcome to our AI assistant. How can I help you today?,greeting,0.8,rule_based
+2025-10-17T16:11:48.109936,test_session,What time is it?,Current time: 04:11 PM,time,0.5267124359031601,ml_prediction
+2025-10-17T16:11:48.118092,test_session,What's today's date?,"The current date is October 17, 2025",date,0.30435408844378237,ml_prediction
+2025-10-17T16:11:48.125799,test_session,What services do you offer?,"I can help with: Customer Service inquiries, HR policy questions, IT support, account management, billing assistance, and general business information. What specific area do you need help with?",services,0.8,rule_based
+2025-10-17T16:11:48.130634,test_session,How's the weather?,"I don't have access to current weather data, but I recommend checking your local weather app or visiting weather.com for accurate, up-to-date weather information.",weather,0.6038049072957343,ml_prediction
+2025-10-17T16:11:48.136475,test_session,Thank you!,Thanks for chatting! Have a great day!,goodbye,0.8,rule_based
+2025-10-22T11:52:35.602954,web_session,Hi,Hello! Welcome to our AI assistant. How can I help you today?,greeting,0.8,rule_based

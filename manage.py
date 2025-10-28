@@ -1,8 +1,4 @@
 #!/usr/bin/env python3
-"""
-Management script for AI Chatbot Assistant
-Provides easy access to Flask CLI commands
-"""
 import sys
 import subprocess
 import os

@@ -9,11 +9,8 @@ from routes import register_routes
 load_dotenv()
 
 # Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s',
-    handlers=[logging.FileHandler('logs/app.log'),logging.StreamHandler()]
-)
+logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(levelname)s - %(message)s',handlers=[logging.FileHandler('logs/app.log'),logging.StreamHandler()])
+
 logger = logging.getLogger(__name__)
 
 def create_app():
